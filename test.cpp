@@ -1,34 +1,53 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
-    int minOperations(string s) {
-    int flipsodd=0;
-    int flipseven=0;
-    int n=s.length();
-
-    if(s[0]=='0'){
-        for(int i=0;i<n;i++){
-            if(i%2==0 && s[i]!='0'){
-           flipseven++;
-            }
-            else if(i%2==1 && s[i]!='1'){
-                flipsodd++;}
+    long long left(int i,vector<int>&nums){
+                int n=nums.size();
+        long long sum=0;
+        if(i==0){
+            return 0;
         }
-
-    }
-    else{
-        for(int i=0;i<n;i++){
-            if(i%2==0 && s[i]!='1'){
-           flipseven++;
-            }
-            else if(i%2==1 && s[i]!='0'){
-                flipsodd++;}
+        for(int j=0;j<i;j++){
+            sum+=nums[j];
         }
+        return sum;
     }
-return flipseven+flipsodd;
+
+    long long right(int i,vector<int>&nums){
+                int n=nums.size();
+                long long mul=1;
+        if(i==n-1){
+            return 1;
+        }
+        for(int j=i+1;j<n;j++){
+             mul=(mul*nums[j]);
+        }
+        return mul;
+    }
+
+    bool isBalanced(long long left,long long right){
+      if(left==right){
+          return true;
+      }  
+        return false;
+    }
+    int smallestBalancedIndex(vector<int>& nums) {
+        int n=nums.size();
+int minIndex=INT_MAX;
+        for(int i=0;i<n;i++){
+        long long l=left(i,nums);
+        long long r=right(i,nums);   
+        if(isBalanced(l,r)){
+          minIndex=min(minIndex,i);  
+        }
+        }
+        if(minIndex>=0 && minIndex!=INT_MAX){
+            return minIndex;
+        }
+        return -1;
     }
 int main() {
-string s="0101";
-cout<<minOperations(s);
+vector<int>vec={2,1,2};
+cout<<smallestBalancedIndex(vec);
 return 0;
 }
