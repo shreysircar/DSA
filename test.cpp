@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
-    long long left(int i,vector<int>&nums){
+   /* long long left(int i,vector<int>&nums){
                 int n=nums.size();
         long long sum=0;
         if(i==0){
@@ -45,9 +45,26 @@ int minIndex=INT_MAX;
             return minIndex;
         }
         return -1;
+    }*/
+
+
+    long long countCommas(long long n) {
+  if(n<1000){return 0;}
+     long long a=1000;
+        long long cnt=0;
+        int commas=1;
+        while(a<=n){
+            cnt=cnt+(n-a+1)*commas;
+            a=a*1000;
+            commas++;
+        }
+        return cnt;
     }
+
 int main() {
-vector<int>vec={2,1,2};
-cout<<smallestBalancedIndex(vec);
+    int n=1004590;
+    cout<<countCommas(n);
+//vector<int>vec={2,1,2};
+//cout<<smallestBalancedIndex(vec);
 return 0;
 }
