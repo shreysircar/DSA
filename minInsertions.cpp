@@ -1,9 +1,9 @@
 class Solution {
 public:
 
-int solve(string s, int i, int j,vector<vector<int>>&dp){
+int solve(string &s, int i, int j,vector<vector<int>>&dp){
 if(i>=j){return 0;}
-if(s[i]==s[j]){return 0+solve(s,i+1,j-1,dp);}
+if(s[i]==s[j]){return dp[i][j]=solve(s,i+1,j-1,dp);}
 if(dp[i][j]!=-1){return dp[i][j];}
     int take1=1+solve(s,i+1,j,dp);
     int take2=1+solve(s,i,j-1,dp);
