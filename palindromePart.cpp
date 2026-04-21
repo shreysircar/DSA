@@ -35,7 +35,7 @@ return dp[i]=minCuts;
 //bottom up
 class Solution {
 public:
-bool isPalindrome(string s, int i,int j){
+bool isPalindrome(string &s, int i,int j){
 while(i<j){
     if(s[i]==s[j]){
         i++;  j--;
