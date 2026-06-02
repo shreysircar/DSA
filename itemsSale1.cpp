@@ -141,3 +141,11 @@ public:
                      dp);
     }
 };
+
+// Activation = first purchase of an item type
+// freebie[i] = reward from that activation
+//
+// Additional purchases are NOT simulated.
+// They are handled at the base case using:
+//
+// budgetLeft / minPrice
